@@ -1,9 +1,7 @@
+const assert = require('assert');
 const add = require('./add');
 
 const result = add(1, 3);
+const expected = 4;
 
-if(result == 4) {
-  console.log('test pass.');
-} else {
-  throw new Error('Expected 1 + 3 equal 4');
-}
+assert.strictEqual(result, expected, 'Add function does not work properly');
