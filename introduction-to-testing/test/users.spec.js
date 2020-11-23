@@ -28,3 +28,18 @@ describe('The findUserByEmail function', () => {
     })
   });
 })
+
+describe('The findUserById function', () => {
+  it('find a user by ID (Using async/await)', async () => {
+    const response = await findUserById(1);
+    assert.strictEqual(response.message, 'User found successfully.');
+  })
+
+  it('should reject if user is not found by ID',  () => {
+    return findUserById(0).then((result) => {
+      assert.fail('Expected findUserById function to reject.');
+    }, (error) => {
+      assert.strictEqual(error.message, 'User with id: 0 was not found.');
+    })
+  });
+})
